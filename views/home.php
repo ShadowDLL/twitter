@@ -1,11 +1,11 @@
 <div class="feed">
     <form method="POST">
-        <textarea name="msg" class="textareapost"></textarea><br/>
+        <textarea name="msg" class="textareapost" autofocus ></textarea><br/>
         <input type="submit" value="Enviar" />
     </form>
     <?php foreach ($feed as $item ): ?>
-    <a href="usuario/posts?id_usuario=<?php echo $item['id_usuario']; ?>"><?php echo $item['nome']; ?> </a> <?php echo $item['data_post']; ?><br/>
-    <?php echo $item['mensagem']; ?><hr/>
+    <a href="usuario/posts?id_usuario=<?php echo $item['id_usuario']; ?>"><?php echo $item['nome']; ?> </a><br/>
+    <?php echo ($item['mensagem']." - ".$item['data_post']); ?><hr/>
     <?php endforeach; ?>
 </div>
 <div class="rightside">

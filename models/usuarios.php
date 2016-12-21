@@ -28,7 +28,7 @@ class usuarios extends model{
     }
     public function cadastrar($nome, $email, $senha){
         $sql = "INSERT INTO usuarios SET nome = '$nome', email = '$email', senha = '$senha'";
-        $this->db->query($sql);  
+        $this->db->query($sql); 
         return $this->db->lastInsertId();
     }
     

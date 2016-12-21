@@ -13,6 +13,9 @@ class posts extends model{
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
+                foreach($array as $chave => $valor) {
+				$array[$chave]['data_post'] = date('H:i', strtotime($valor['data_post']));
+			}
             }
         }
         return $array;
@@ -25,9 +28,13 @@ class posts extends model{
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
+                foreach($array as $chave => $valor) {
+				$array[$chave]['data_post'] = date('H:i', strtotime($valor['data_post']));
+			}
             }
         }
         return $array;
     }
 }
 
+	

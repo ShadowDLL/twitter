@@ -19,22 +19,19 @@ class homeController extends controller {
         
         if (!$u->statusAtivo()) {
            $md5 = md5($_SESSION['twlg']);
-        $link = "http://www.twitter.orlnet.xyz/cadastroconfirma/confirmar.php?h=".$md5;
-        $assunto = "Confirme seu cadastro";
-        $email = $u->getEmail();
-        $msg = "Clique no link abaixo para confirmar seu cadastro:\n\n".$link;
-        $headers = "From: suporte@orlnet.xyz"."\r\n"."X-Mailer: PHP/".phpversion();
-        mail($email, $assunto, $msg, $headers);
-        
-        echo "<h2>Confirme seu cadastro agora!</h2>";
-        exit; 
+           $link = "twitter.orlnet.xyz/confirmar?h=".$md5;
+           $assunto = "Confirme seu cadastro";
+           $email = $u->getEmail();
+           $msg = "Clique no link abaixo para confirmar seu cadastro:\n\n".$link;
+           $headers = "From: suporte@orlnet.xyz"."\r\n"."X-Mailer: PHP/".phpversion();
+           mail($email, $assunto, $msg, $headers);
+           echo "<h2>Confirme seu cadastro agora!</h2>";
+           exit; 
         }
         
         if (isset($_POST['msg']) && !empty($_POST['msg'])) {
-            $msg = addslashes($_POST['msg']);
-            $_POST['msg'] = "";      
-            $p->inserirPost($msg);
-            
+            $msg = addslashes($_POST['msg']);               
+            $p->inserirPost($msg);       
         }
         
         $dados['nome'] = $u->getNome();
