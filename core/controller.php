@@ -14,7 +14,12 @@ class controller {
 	}
 
 	public function loadTemplate($viewName, $viewData = array()) {
-                extract($viewData);
+                $dados = array('nome' => '');
+                $sql = "SELECT * FROM categorias";
+                $sql = $this->db->query($sql);
+                if ($sql->rowCount() > 0) {
+                    $dados = $sql->fetchAll();
+                }
 		include 'views/template.php';
 	}
 
